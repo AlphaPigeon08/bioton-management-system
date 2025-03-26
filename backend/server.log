@@ -1,0 +1,867 @@
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T05:24:09.556Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T05:24:09.571Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T05:24:09.600Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T05:25:03.381Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T05:25:03.390Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T05:25:03.400Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T05:25:13.779Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T05:25:13.788Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T05:25:13.811Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T05:25:34.063Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T05:25:34.078Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T05:25:34.090Z"}
+{"level":"info","message":"⚠️ Checking Low Stock Items...","timestamp":"2025-03-19T05:26:17.807Z"}
+{"level":"info","message":"✅ Low stock alert sent:","timestamp":"2025-03-19T05:26:19.387Z"}
+{"level":"info","message":"📤 Exporting Inventory...","timestamp":"2025-03-19T05:29:02.744Z"}
+{"level":"info","message":"✅ Inventory report sent:","timestamp":"2025-03-19T05:29:04.061Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T05:37:10.781Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T05:37:10.800Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T05:37:10.824Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T05:37:26.279Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T05:37:27.135Z"}
+{"level":"warn","message":"⚠️ Invalid or Expired Token.","timestamp":"2025-03-19T05:39:10.495Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T05:39:27.076Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T05:39:27.141Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T05:39:27.225Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T05:40:31.534Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T05:40:52.543Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T05:40:53.361Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T05:57:31.918Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T05:57:31.932Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T05:57:31.958Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T05:57:46.932Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T06:02:11.608Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T06:02:11.620Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T06:02:11.643Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T06:04:41.888Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T06:04:41.943Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T06:04:42.016Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:04:43.551Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:14:56.874Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:14:58.067Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:14:58.383Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:22:28.729Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:22:29.870Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:22:33.810Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:22:34.465Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:22:34.748Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:22:35.113Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T06:22:53.505Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T06:22:53.563Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T06:22:53.653Z"}
+{"level":"warn","message":"⚠️ Unauthorized access attempt.","timestamp":"2025-03-19T06:22:53.681Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T06:27:12.404Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T06:27:12.418Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T06:27:12.444Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T06:27:47.250Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T06:27:47.281Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T06:27:47.366Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T06:28:45.753Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T06:28:45.759Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T06:28:45.847Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T06:32:14.858Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T06:39:14.024Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T06:39:14.040Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T06:39:14.074Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T06:41:35.161Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T06:41:35.211Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T06:41:35.302Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T06:55:08.179Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T06:55:08.193Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T06:55:08.225Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T06:56:12.406Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T06:56:12.468Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T06:56:12.546Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T06:58:04.134Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T06:58:04.180Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T06:58:04.260Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T07:00:39.202Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T07:00:39.289Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T07:00:39.364Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T07:03:55.190Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T07:08:02.768Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T07:08:02.810Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T07:08:02.881Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T07:10:40.452Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T07:10:40.467Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T07:10:40.495Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T07:11:00.122Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T07:13:50.276Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T07:13:50.283Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T07:13:50.354Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T07:19:48.987Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T07:23:42.513Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T07:23:42.523Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T07:23:42.549Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T07:30:19.327Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T07:30:19.337Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T07:30:19.371Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:30:33.775Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T07:35:01.072Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T07:35:01.119Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T07:35:01.201Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T07:35:51.754Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T07:35:51.768Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T07:35:51.787Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:36:20.219Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T07:36:49.425Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T07:36:49.467Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T07:36:49.559Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:36:49.581Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T07:41:44.699Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T07:41:44.713Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T07:41:44.736Z"}
+{"level":"info","message":"✅ Inventory Data Fetched","timestamp":"2025-03-19T07:41:51.968Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:42:54.940Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:47:17.227Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T07:49:13.682Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T07:49:13.695Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T07:49:13.722Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:49:59.926Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:50:26.763Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:52:51.551Z"}
+{"level":"info","message":"✅ Inventory Data Fetched","timestamp":"2025-03-19T07:53:57.123Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:54:24.487Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:54:25.983Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:54:26.503Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T07:54:33.752Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T07:56:53.955Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T07:56:53.970Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T07:56:54.005Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T08:00:30.738Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T08:00:30.746Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T08:00:30.764Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T08:01:19.217Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T08:01:19.223Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T08:01:19.224Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T08:04:19.621Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T08:04:19.629Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T08:04:19.645Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T08:04:40.547Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T08:04:40.553Z"}
+{"level":"info","message":"✅ Insulin products retrieved successfully","timestamp":"2025-03-19T08:04:40.584Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T17:59:40.223Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T17:59:40.292Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T17:59:40.376Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T18:01:03.020Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T18:01:03.022Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T18:01:03.022Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T18:01:15.318Z"}
+{"level":"info","message":"✅ Inventory Data Fetched","timestamp":"2025-03-19T18:01:50.754Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T19:15:33.635Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T19:15:33.649Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T19:15:33.699Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T19:16:29.908Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T19:16:29.954Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T19:16:30.044Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:20:19.119Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:20:19.122Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:20:19.122Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:20:19.131Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:20:19.132Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:20:19.132Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:20:19.133Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:20:19.134Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:20:19.134Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:20:19.135Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:20:19.135Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:20:19.135Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:20:52.118Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:20:52.120Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:20:52.120Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:20:52.127Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:20:52.128Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:20:52.128Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:28:15.740Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:28:15.742Z"}
+{"level":"info","message":"✅ Insulin products retrieved successfully","timestamp":"2025-03-19T19:28:15.786Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:28:15.787Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:28:15.788Z"}
+{"level":"info","message":"✅ Insulin products retrieved successfully","timestamp":"2025-03-19T19:28:15.789Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:28:36.320Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:28:36.322Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:28:36.337Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:28:36.338Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:30:38.086Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:30:38.087Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:30:38.089Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:30:38.090Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:30:43.020Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:30:43.020Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:30:43.022Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:30:43.023Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:30:43.828Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:30:43.829Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:30:43.831Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:30:43.831Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:30:44.295Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:30:44.295Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:30:44.297Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:30:44.297Z"}
+{"level":"warn","message":"⚠️ No token provided.","timestamp":"2025-03-19T19:31:04.967Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T19:32:00.456Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T19:32:00.467Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T19:32:00.545Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:33:03.664Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:33:03.668Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:34:57.092Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:34:57.094Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:34:57.097Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:34:57.097Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:30.316Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:30.318Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:30.319Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:30.370Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:30.370Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:30.370Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:34.482Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:34.483Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:34.483Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:34.488Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:34.488Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:34.488Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:35.195Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:35.196Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:35.196Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:35.198Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:35.198Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:35.198Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:35.990Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:35.991Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:35.991Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:35.995Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:35.995Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:35.995Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:36.306Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:36.307Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:36.307Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:49:36.309Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:49:36.310Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:49:36.310Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T19:50:45.024Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T19:50:45.030Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T19:50:45.127Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:50:45.154Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:50:45.154Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:50:45.155Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T19:50:45.156Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T19:50:45.157Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T19:50:45.157Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:11:51.753Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T20:11:51.768Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T20:11:51.768Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:11:51.816Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T20:11:51.817Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T20:11:51.817Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:13:11.575Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:13:11.577Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:13:11.579Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:13:11.579Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:13:20.268Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:13:20.268Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:13:20.270Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:13:20.270Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:13:41.948Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:13:41.949Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:13:41.950Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:13:41.950Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:13:49.330Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:13:49.330Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:13:49.332Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:13:49.332Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:14:18.193Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:14:18.194Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:14:18.195Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:14:18.196Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T20:16:35.135Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T20:16:35.143Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T20:16:35.180Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:17:18.293Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:17:18.294Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:17:18.298Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:17:18.298Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:17:34.104Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:17:34.104Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:17:34.106Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:17:34.106Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:24:12.249Z"}
+{"level":"info","message":"✅ Token Verified! User ID:","timestamp":"2025-03-19T20:24:12.258Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T20:24:12.258Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T20:26:57.400Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T20:26:57.409Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T20:26:57.425Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:27:49.857Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:27:49.858Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:27:49.862Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:27:49.862Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:27:56.540Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:27:56.541Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:27:56.543Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:27:56.543Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:28:32.507Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:28:32.508Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:28:32.509Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:28:32.509Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:28:38.280Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:28:38.280Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:28:38.282Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:28:38.282Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:28:41.215Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:28:41.216Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:28:41.219Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:28:41.219Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:30:12.181Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:30:12.182Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:30:12.184Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:30:12.184Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:35:34.766Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:35:34.766Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:35:34.768Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:35:34.769Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:36:18.246Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:36:18.247Z"}
+{"level":"info","message":"🔹 Token Received:","timestamp":"2025-03-19T20:36:18.250Z"}
+{"level":"error","message":"❌ Invalid Token:","timestamp":"2025-03-19T20:36:18.250Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T20:43:54.266Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T20:43:54.275Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T20:43:54.301Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T20:56:13.663Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T20:56:13.673Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T20:56:13.703Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T20:57:51.259Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T20:57:51.306Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T20:57:51.395Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T20:57:54.632Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T20:57:54.642Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T21:19:15.840Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T21:19:15.895Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T21:19:15.991Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T21:19:19.452Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T21:19:19.459Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T21:19:27.608Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T21:19:27.620Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-19T21:30:50.233Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-19T21:30:50.296Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-19T21:30:50.364Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T21:30:56.152Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T21:30:56.156Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T21:31:28.312Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T21:31:28.314Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-19T22:08:42.586Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-19T22:08:42.602Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-19T22:08:42.638Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T22:25:53.971Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-19T22:25:54.028Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T00:23:23.156Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T00:23:23.194Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-20T00:24:03.478Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-20T00:24:03.488Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-20T00:24:03.583Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T00:24:08.995Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T00:24:08.998Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-20T06:11:31.553Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-20T06:11:31.613Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-20T06:11:31.698Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:11:33.261Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:11:33.269Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:11:45.680Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:11:45.683Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:11:53.048Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:11:53.050Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:12:03.955Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:12:03.957Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:13:00.367Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:13:00.374Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:13:36.165Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:13:36.169Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-20T06:20:24.224Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-20T06:20:24.231Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-20T06:20:24.327Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:20:24.376Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:20:24.389Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:20:39.331Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:20:39.334Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:20:43.109Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:20:43.112Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:20:48.729Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:20:48.732Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:24:06.087Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:24:21.699Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:24:21.703Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:24:28.746Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:24:28.748Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:28:05.073Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:28:05.075Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:28:28.485Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:28:28.488Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:28:32.389Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:28:32.393Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:32:38.234Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:32:38.239Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:32:46.504Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:32:46.507Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:32:53.712Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:32:53.715Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:34:40.021Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:34:40.026Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:37:21.041Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:38:30.244Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:38:30.250Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:46:47.305Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:46:47.359Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:52:55.302Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T06:52:55.335Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T07:00:49.123Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T07:00:49.175Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-20T07:01:42.451Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-20T07:01:42.456Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-20T07:01:42.550Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-20T07:08:34.570Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-20T07:08:34.620Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-20T07:08:34.717Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T07:08:37.812Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T07:08:37.818Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T07:18:56.987Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T07:18:57.065Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T07:20:28.390Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T07:20:28.396Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-20T07:30:16.734Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-20T07:30:16.742Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-20T07:30:16.757Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-20T23:33:56.853Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-20T23:33:56.921Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-20T23:33:56.991Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:34:04.249Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:34:04.264Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-20T23:49:34.377Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-20T23:49:34.387Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-20T23:49:34.420Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-20T23:50:26.180Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-20T23:50:26.218Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-20T23:50:26.305Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:55:34.855Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:55:34.873Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:56:02.601Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:56:02.605Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:56:19.445Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:56:19.448Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:57:41.326Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:57:41.331Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:57:54.319Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:57:54.323Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:57:58.184Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:57:58.190Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:58:19.195Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:58:19.198Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-20T23:59:36.685Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:05:20.543Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:05:20.546Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:05:50.286Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:05:50.291Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:09:58.828Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:09:58.832Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:20:32.372Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:20:32.382Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:20:51.338Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:21:36.045Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:21:44.627Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:21:54.233Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:21:54.236Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-21T00:23:08.354Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-21T00:23:08.359Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-21T00:23:08.454Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:23:25.399Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:23:25.402Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:23:37.452Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:24:19.922Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-21T00:43:25.333Z"}
+{"level":"info","message":"✅ User found in database: sonyalpha08@gmail.com","timestamp":"2025-03-21T00:43:25.385Z"}
+{"level":"info","message":"✅ Password matched, generating JWT token...","timestamp":"2025-03-21T00:43:25.476Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:49:04.703Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:49:04.715Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:49:15.517Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:49:15.521Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:49:19.737Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:49:19.742Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:49:55.419Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T00:49:55.430Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:31:41.649Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:31:41.704Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:32:19.322Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:32:39.966Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:32:39.970Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:32:43.559Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:32:43.562Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:41:44.914Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:41:44.994Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:51:11.410Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:51:11.419Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:51:20.171Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:51:20.174Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:59:01.948Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:59:01.963Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:59:09.384Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:59:09.388Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:59:52.865Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T17:59:52.867Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:00:50.712Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:01:04.357Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:01:04.370Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:03:26.968Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:03:26.973Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:03:47.427Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:03:47.436Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:10:20.928Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:10:25.163Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:10:25.166Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:10:30.231Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:10:30.235Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:13:04.730Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:13:04.782Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:13:20.471Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:13:20.476Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:13:23.253Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:13:23.256Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:14:50.014Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:14:50.028Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:24:02.790Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:24:02.822Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:24:43.858Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:24:43.861Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:24:49.454Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:24:49.456Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:29:15.080Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:29:15.105Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:29:18.118Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:29:18.124Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:29:38.098Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:29:38.100Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:33:23.109Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:33:23.113Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:33:56.169Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:34:04.139Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:34:04.142Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:34:31.617Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:34:31.621Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:34:47.097Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:34:47.100Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:34:51.414Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:34:51.418Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:35:37.166Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:35:43.891Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:35:43.897Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:35:47.864Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:35:47.867Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:38:09.971Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:38:14.878Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:38:14.890Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:42:33.392Z"}
+{"level":"info","message":"📦 Inventory Fetch Request","timestamp":"2025-03-21T18:42:33.395Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-21T18:48:48.115Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-21T18:48:48.130Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-21T18:48:48.163Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-21T18:58:59.779Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-21T18:58:59.792Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-21T18:58:59.835Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T18:59:18.599Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:13:01.778Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-21T19:13:53.436Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-21T19:13:53.444Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-21T19:13:53.459Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:14:19.002Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:14:19.002Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:14:19.003Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:14:19.014Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:14:19.014Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:14:19.036Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:14:29.832Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:14:29.833Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:14:29.836Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:14:29.838Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:14:29.838Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:14:29.841Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:15:11.350Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:15:11.350Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:15:11.351Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:15:11.355Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:15:11.356Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:15:11.357Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:15:22.712Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:15:22.712Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:15:22.713Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:15:22.716Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:15:22.716Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:15:22.717Z"}
+{"level":"info","message":"🟢 Login request received","timestamp":"2025-03-21T19:17:35.978Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:17:36.111Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:17:36.111Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:17:36.113Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:17:36.115Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:17:36.115Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:17:36.117Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:17:37.584Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:17:37.585Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:17:37.586Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:17:37.587Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:17:37.587Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:17:37.589Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:24:01.349Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:24:01.349Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:24:01.351Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:24:01.398Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:24:01.398Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:24:01.399Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:24:06.324Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:24:06.325Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:24:06.325Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:24:06.328Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:24:06.328Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:24:06.334Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:25:28.406Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:25:28.410Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:25:44.849Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:25:44.849Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:25:44.850Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:25:44.853Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:25:44.853Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:25:44.853Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:33:58.138Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:33:58.155Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:33:58.155Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:33:58.186Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:33:58.189Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:33:58.189Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:34:08.714Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:34:08.719Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:37:47.671Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:37:47.671Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:37:47.671Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:37:47.675Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:37:47.675Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:37:47.677Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:40:31.292Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:40:31.298Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:40:34.697Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:40:34.697Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:40:34.698Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-21T19:40:34.702Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-21T19:40:34.702Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-21T19:40:34.703Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-22T00:10:11.458Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T00:10:11.459Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-22T00:10:11.460Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-22T00:10:11.511Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T00:10:11.511Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-22T00:10:11.515Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-22T00:10:19.799Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-22T00:10:19.804Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-22T00:10:29.312Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T00:10:29.312Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-22T00:10:29.312Z"}
+{"level":"info","message":"✅ Token Verified! User ID: 5, Role: Admin","timestamp":"2025-03-22T00:10:29.316Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T00:10:29.316Z"}
+{"level":"info","message":"📊 Fetching Inventory Statuses","timestamp":"2025-03-22T00:10:29.317Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-22T00:41:56.709Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-22T00:41:56.724Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-22T00:41:56.755Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T00:43:10.629Z"}
+{"level":"info","message":"🚀 Logging system initialized","timestamp":"2025-03-22T00:54:19.214Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-22T00:54:19.222Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-22T00:54:19.237Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T00:54:55.086Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T00:54:56.593Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:07:28.828Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:07:28.873Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T02:07:28.877Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T02:07:30.288Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T02:07:30.298Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T02:07:31.676Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T02:08:06.336Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T02:08:07.718Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T02:08:07.895Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T02:08:09.280Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T02:08:09.288Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T02:08:10.621Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:09:11.242Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T02:09:11.247Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:09:11.250Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T02:09:12.882Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T02:09:12.892Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T02:09:14.317Z"}
+{"level":"info","message":"📄 Inventory report CSV generated.","timestamp":"2025-03-22T02:15:12.389Z"}
+{"level":"info","message":"📧 Alert email sent:","timestamp":"2025-03-22T02:15:13.633Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-22T02:23:58.370Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-22T02:23:58.396Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:25:25.268Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:25:25.285Z"}
+{"level":"info","message":"📧 Alert email sent successfully","timestamp":"2025-03-22T02:25:45.876Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:26:30.932Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:26:30.938Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:26:45.260Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:26:45.263Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:27:14.969Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:27:14.977Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:27:22.372Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:27:22.376Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-22T02:45:21.866Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-22T02:45:21.897Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T02:45:31.711Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T02:45:31.714Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:45:31.716Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T02:45:31.756Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T02:45:31.757Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:45:31.760Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:45:36.673Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:45:36.679Z"}
+{"level":"info","message":"📧 Alert email sent successfully","timestamp":"2025-03-22T02:48:22.408Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:52:56.294Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:52:56.337Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T02:53:17.501Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T02:53:17.506Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T02:53:18.732Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T02:53:18.736Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T02:53:19.605Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T02:53:19.608Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:53:25.942Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:53:25.946Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:53:25.950Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T02:53:25.952Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-22T04:44:21.814Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-22T04:44:21.848Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T04:47:58.747Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:47:58.748Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T04:47:58.750Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T04:47:58.805Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:47:58.808Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T04:47:58.811Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:02.779Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:02.787Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:02.792Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:02.796Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T04:48:17.005Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T04:48:17.009Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:17.010Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T04:48:17.015Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T04:48:17.022Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:17.022Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:18.279Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:18.282Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:18.283Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:48:18.285Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T04:49:00.925Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T04:49:00.929Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T04:49:03.420Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T04:49:03.425Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T04:49:15.283Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T04:49:15.285Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:49:16.370Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:49:16.372Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:49:16.373Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:49:16.375Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:53:40.743Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:53:40.747Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T04:54:28.067Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:01:05.744Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:01:05.748Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:01:05.751Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:01:05.753Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:01:18.122Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T05:01:31.561Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-22T05:01:31.567Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T05:01:34.233Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-22T05:01:34.236Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:02:11.794Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:02:11.796Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:02:11.797Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-22T05:02:11.798Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T00:54:40.532Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T00:54:40.597Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T00:54:40.599Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T00:54:40.601Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T00:54:51.801Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T00:54:51.806Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-24T00:54:53.031Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-24T00:54:53.034Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T00:54:54.169Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T00:54:54.172Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T04:14:02.959Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T04:14:03.021Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T04:14:03.023Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T04:14:03.025Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T04:14:15.843Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T04:14:15.847Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-24T04:14:26.246Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-24T04:14:26.249Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T22:42:53.867Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T22:42:53.869Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-24T22:42:53.870Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T22:42:53.921Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T22:42:53.924Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-24T22:42:53.926Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T22:42:55.462Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T22:42:55.466Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T22:42:55.468Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T22:42:55.471Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T22:43:16.149Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T22:43:16.151Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-24T22:43:16.151Z"}
+{"level":"info","message":"📜 Fetching Orders","timestamp":"2025-03-24T22:43:16.154Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T22:43:16.155Z"}
+{"level":"info","message":"⚠️ Fetching Exceptions","timestamp":"2025-03-24T22:43:16.156Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-24T22:48:45.095Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-24T22:48:45.132Z"}
+{"level":"info","message":"📦 Fetching All Inventory Items","timestamp":"2025-03-24T23:04:29.954Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-24T23:15:27.157Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-24T23:15:27.191Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-24T23:26:36.722Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-24T23:26:36.756Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T01:57:45.222Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T01:57:45.260Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T02:04:57.669Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T02:04:57.693Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T02:34:04.237Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T02:34:04.287Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T02:43:51.074Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T02:43:51.100Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T05:52:41.867Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T05:52:41.909Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T06:14:40.341Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T06:14:40.392Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T06:47:02.737Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T06:47:02.763Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T06:50:23.671Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T06:50:23.683Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T07:00:07.862Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T07:00:07.875Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-25T18:54:31.894Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-25T18:54:31.917Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T00:41:57.201Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T00:41:57.233Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T03:13:40.018Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T03:13:40.060Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T03:31:53.680Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T03:31:53.711Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T03:40:30.714Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T03:40:30.734Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T04:49:11.168Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T04:49:11.193Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T05:24:00.119Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T05:24:00.142Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T05:36:24.926Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T05:36:24.960Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T06:02:52.845Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T06:02:52.872Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T06:33:23.337Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T06:33:23.360Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T06:38:47.210Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T06:38:47.230Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T06:49:40.706Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T06:49:40.732Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T15:49:15.249Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T15:49:15.269Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T16:16:46.241Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T16:16:46.259Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T21:39:53.219Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T21:39:53.241Z"}
+{"level":"info","message":"🚀 Server running on port 5001","timestamp":"2025-03-26T21:57:55.016Z"}
+{"level":"info","message":"✅ MySQL Connected...","timestamp":"2025-03-26T21:57:55.049Z"}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Insulin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        table { width: 80%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; }
+        th { background-color: #007BFF; color: white; }
+    </style>
+</head>
+<body>
+    <h2>📋 Product Insulin Dashboard</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Manufacturer</th>
+                <th>Unit Price ($)</th>
+                <th>Storage Temperature</th>
+            </tr>
+        </thead>
+        <tbody id="insulin-table"></tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const token = localStorage.getItem("authToken");
+
+            if (!token) {
+                console.error("❌ No token found! Redirecting to login...");
+                window.location.href = "/login";
+                return;
+            }
+
+            fetch("http://localhost:5001/product-insulin", {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`, 
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Unauthorized or Token Expired");
+                return response.json();
+            })
+            .then(data => {
+                console.log("✅ Product Insulin Data:", data);
+                renderInsulinDashboard(data);
+            })
+            .catch(error => {
+                console.error("❌ Error fetching insulin data:", error);
+                alert("Session expired! Please log in again.");
+                localStorage.removeItem("authToken");
+                window.location.href = "/login";
+            });
+        });
+
+        function renderInsulinDashboard(data) {
+            const tableBody = document.getElementById("insulin-table");
+            tableBody.innerHTML = "";
+
+            data.forEach(item => {
+                const row = `<tr>
+                    <td>${item.product_id}</td>
+                    <td>${item.product_name}</td>
+                    <td>${item.category}</td>
+                    <td>${item.manufacturer}</td>
+                    <td>${item.unit_price}</td>
+                    <td>${item.storage_temperature}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+    </script>
+</body>
+</html>

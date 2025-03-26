@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Warehouse Exception Log</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #FF5722; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Warehouse Exception Log</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Exception ID</th>
+                <th>Inventory ID</th>
+                <th>Exception Type</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody id="exception-list"></tbody>
+    </table>
+
+    <script>
+        fetch('/exceptions')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('exception-list');
+                data.forEach(exception => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${exception.exception_id}</td>
+                        <td>${exception.inventory_id}</td>
+                        <td>${exception.exception_type}</td>
+                        <td>${new Date(exception.timestamp).toLocaleString()}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching exceptions:', error));
+    </script>
+</body>
+</html>

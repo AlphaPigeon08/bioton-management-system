@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        table { width: 80%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; }
+        th { background-color: #007BFF; color: white; }
+    </style>
+</head>
+<body>
+    <h2>📦 Inventory Dashboard</h2>
+    
+    <p id="auth-error" style="color: red; display: none;">❌ Unauthorized! Redirecting to Login...</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Inventory ID</th>
+                <th>Warehouse ID</th>
+                <th>Batch No</th>
+                <th>Expiry Date</th>
+                <th>Quantity</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="inventory-table"></tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+        console.error("❌ No token found! Redirecting to login...");
+        window.location.href = "/login";
+        return;
+    }
+
+    fetch("http://localhost:5001/inventory-dashboard", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("Unauthorized or Token Expired");
+        return response.text();  // Use `.text()` instead of `.json()` because EJS returns HTML
+    })
+    .then(html => {
+        document.documentElement.innerHTML = html; // Render page
+    })
+    .catch(error => {
+        console.error("❌ Error fetching inventory dashboard:", error);
+        alert("Session expired! Please log in again.");
+        localStorage.removeItem("authToken");
+        window.location.href = "/login";
+    });
+});
+
+        f// ✅ Function to Display Data in the Table
+function renderInventoryDashboard(data) {
+    const tableBody = document.getElementById("inventory-table");
+    tableBody.innerHTML = ""; // Clear existing content
+
+    data.forEach(item => {
+        const row = `<tr>
+                        <td>${item.inventory_id}</td>
+                        <td>${item.warehouse_id}</td>
+                        <td>${item.batch_no}</td>
+                        <td>${new Date(item.expiry_date).toLocaleDateString()}</td>
+                        <td>${item.quantity}</td>
+                        <td>${item.status}</td>
+                    </tr>`;
+        tableBody.innerHTML += row;
+    });
+}
+
+    </script>
+</body>
+</html>
