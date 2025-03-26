@@ -1,0 +1,67 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #002244;
+    color: white;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 40px;
+    max-width: 120px;
+}
+
+.welcome-message {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.user-account {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-icon {
+    font-size: 24px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 200px;
+}
+
+.dropdown-menu p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.logout-btn:hover {
+    background: darkred;
+}
