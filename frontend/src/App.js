@@ -4,8 +4,9 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import VerifyOTP from "./pages/VerifyOTP";
 import UserSettings from "./pages/UserSettings";
+import TransferInventory from "./pages/TransferInventory";
 import "bootstrap/dist/css/bootstrap.min.css";
-import API from "./api"; // ✅ ADD THIS
+import API from "./api";
 
 // ✅ Set auth token globally
 const token = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
@@ -40,6 +41,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <UserSettings />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transfer"
+          element={
+            <PrivateRoute>
+              <TransferInventory />
             </PrivateRoute>
           }
         />

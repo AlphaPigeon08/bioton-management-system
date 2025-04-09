@@ -5,12 +5,11 @@ import API from "../api";
 import Logo from "../assets/logo.jpeg";
 import insulinBg from "../assets/insulin-bg.jpg";
 
-// ✅ Background image container with blur
 const Background = styled.div`
   background-image: url(${insulinBg});
   background-size: cover;
   background-position: center;
-  filter: blur(6px);
+  filter: blur(8px);
   position: fixed;
   top: 0;
   left: 0;
@@ -19,10 +18,9 @@ const Background = styled.div`
   z-index: -2;
 `;
 
-// ✅ Dark overlay to enhance readability
 const Overlay = styled.div`
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +29,6 @@ const Overlay = styled.div`
   z-index: -1;
 `;
 
-// ✅ Login container
 const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,58 +38,59 @@ const LoginContainer = styled.div`
   color: white;
 `;
 
-// ✅ Login box
 const LoginBox = styled.div`
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  width: 350px;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 360px;
   text-align: center;
 `;
 
 const LogoImage = styled.img`
-  width: 80px;
-  margin-bottom: 20px;
+  width: 90px;
+  margin-bottom: 15px;
 `;
 
 const Input = styled.input`
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
 `;
 
 const Button = styled.button`
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 10px;
-  background: #2a5298;
+  background: linear-gradient(to right, #2a5298, #1e3c72);
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 18px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
   cursor: pointer;
 
   &:hover {
-    background: #1e3c72;
+    opacity: 0.9;
   }
 `;
 
 const ErrorMessage = styled.p`
-  color: red;
+  color: #d9534f;
   font-size: 14px;
+  margin: 8px 0;
 `;
 
 const CheckboxLabel = styled.label`
   font-size: 14px;
   display: flex;
   align-items: center;
-  margin-top: 10px;
-  gap: 10px;
-  color: #333;
+  margin-top: 8px;
+  gap: 8px;
+  color: #555;
 `;
 
 const Login = () => {
@@ -105,9 +103,7 @@ const Login = () => {
 
   useEffect(() => {
     const token =
-      localStorage.getItem("authToken") ||
-      sessionStorage.getItem("authToken");
-
+      localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
     if (token && location.pathname === "/") {
       navigate("/dashboard");
     }
@@ -151,18 +147,19 @@ const Login = () => {
 
   return (
     <>
-      {/* ✅ Background Image & Overlay */}
       <Background />
       <Overlay />
 
       <LoginContainer>
         <LoginBox>
-        <LogoImage src={Logo} alt="Logo" />
-<h3 style={{ color: "#2a5298", fontWeight: "bold", marginBottom: "5px" }}>
-  Bioton S A
-</h3>
-<h4 style={{ color: "#2a5298", marginBottom: "20px" }}>Login</h4>
+          <LogoImage src={Logo} alt="Logo" />
+          <h3 style={{ color: "#1e3c72", fontWeight: "bold", marginBottom: "6px" }}>
+            Bioton Management
+          </h3>
+          <h5 style={{ color: "#1e3c72", marginBottom: "20px" }}>Login to continue</h5>
+
           {error && <ErrorMessage>{error}</ErrorMessage>}
+
           <form onSubmit={handleLogin}>
             <Input
               type="email"

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Inventory from "./Inventory";
 import Orders from "./Orders";
 import Exceptions from "./Exceptions";
@@ -8,8 +9,6 @@ import { Bar, Pie, Doughnut } from "react-chartjs-2";
 import API from "../api";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import insulinBg from "../assets/insulin-bg.jpg";
-
 import {
   Chart as ChartJS,
   BarElement,
@@ -37,7 +36,11 @@ const Dashboard = () => {
   const [inventoryStats, setInventoryStats] = useState(null);
   const [exceptionStats, setExceptionStats] = useState(null);
   const [insulinStats, setInsulinStats] = useState(null);
+  const [transferStats, setTransferStats] = useState(null);
+  const [transferRoute, setTransferRoute] = useState("All");
   const [loading, setLoading] = useState(true);
+  const transferEntries = Object.entries(transferStats || {});
+const totalTransferred = transferEntries.reduce((sum, [, qty]) => sum + qty, 0);
   const [error, setError] = useState("");
 
   const [filters, setFilters] = useState({
@@ -45,16 +48,31 @@ const Dashboard = () => {
     inventoryStatus: "All",
     exceptionType: "All",
     insulinCategory: "All",
+    warehouseName: "All",
   });
+  const [inventoryByWarehouse, setInventoryByWarehouse] = useState({});
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.tab) {
+      setActiveTab(location.state.tab);
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
+  useEffect(() => {
+    console.log("🔥 Transfer Stats:", transferStats);
+  }, [transferStats]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [ordersRes, inventoryRes, exceptionsRes, insulinRes] = await Promise.all([
+        const [ordersRes, inventoryRes, exceptionsRes, insulinRes, transfersRes] = await Promise.all([
           API.get("/orders"),
           API.get("/inventory"),
           API.get("/exceptions"),
           API.get("/product-insulin"),
+          API.get("/transfers"),
         ]);
 
         const orders = ordersRes.data.reduce((acc, order) => {
@@ -68,6 +86,14 @@ const Dashboard = () => {
           return acc;
         }, {});
         setInventoryStats(inventory);
+        const inventoryWarehouse = inventoryRes.data.reduce((acc, item) => {
+          const warehouse = item.warehouse_name;
+          const qty = Number(item.quantity);
+          acc[warehouse] = (acc[warehouse] || 0) + qty;
+          return acc;
+        }, {});
+        setInventoryByWarehouse(inventoryWarehouse);
+  
 
         const exceptions = exceptionsRes.data.reduce((acc, ex) => {
           acc[ex.exception_type] = (acc[ex.exception_type] || 0) + 1;
@@ -80,6 +106,13 @@ const Dashboard = () => {
           return acc;
         }, {});
         setInsulinStats(insulin);
+
+        const transfers = transfersRes.data.reduce((acc, t) => {
+          const route = `${t.from_warehouse_name} → ${t.to_warehouse_name}`;
+          acc[route] = (acc[route] || 0) + t.quantity;
+          return acc;
+        }, {});
+        setTransferStats(transfers);
       } catch (err) {
         console.error("❌ Failed to fetch dashboard data:", err);
         setError("❌ Failed to load dashboard data. Please try again later.");
@@ -96,38 +129,122 @@ const Dashboard = () => {
     return { [key]: data[key] };
   };
 
-  const renderChart = (label, data, ChartComponent, colors) => {
+  const filteredWarehouseData = Object.entries(inventoryByWarehouse || {})
+  .filter(([_, qty]) => qty > 0)
+  .reduce((acc, [name, qty]) => {
+    acc[name] = qty;
+    return acc;
+  }, {}); 
+
+  const renderChart = (label, data, ChartComponent, colors, options = {}) => {
     if (!data || Object.keys(data).length === 0) {
       return <p>⚠️ No {label.toLowerCase()} data available.</p>;
     }
 
+    const isStockTransfers = label === "Stock Transfers";
+    const isOrders = label === "Orders by Status";
+    const isWarehouse = label === "Warehouse Stock";
+  
+    // Conditional style
+    const chartStyle = {
+      maxWidth: isStockTransfers || isOrders || isWarehouse? "700px" : "400px",
+      margin: "10px auto",
+      paddingTop : "20px",
+      textAlign: "center",
+    };
+  
+    // Conditional x-axis tick display
+    const chartOptions = {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { enabled: true },
+      },
+      ...options,
+      scales: {
+        ...(options.scales || {}),
+        x: {
+          ...(options.scales?.x || {}),
+          ticks: {
+            ...(options.scales?.x?.ticks || {}),
+            display: !isStockTransfers && !isWarehouse, // hide x-axis labels only for Stock Transfers
+          },
+        },
+      },
+    };
+  
+  
+    const colorMaps = {
+      "Orders by Status": {
+      "Pending": "#007bff",       // Blue
+      "Processing": "#17a2b8",    // Teal
+      "Shipped": "#ffc107",       // Yellow
+      "Delivered": "#28a745",     // Green
+      "Cancelled": "#dc3545",     // Red
+      "Returned": "#6f42c1",      // Purple
+      "Failed": "#343a40",        // Dark gray
+      "Completed": "#20c997",      // Aqua
+},
+
+      "Inventory by Status": {
+        "Out of Stock": "#17a2b8",
+        "Expired": "#ffc107",
+        "Reserved": "#dc3545",
+        "Available": "#6c757d"
+      },
+     "Exceptions": {
+  "Missing Items": "#dc3545",         // Red
+  "Expired Stock Issue": "#ffc107",   // Yellow
+  "Late Processing": "#007bff",       // Blue
+  "Order Mismatch": "#6f42c1",        // Purple
+  "FIFO Violation": "#20c997",        // Teal
+  "FIFO": "#fd7e14"                   // Orange
+},
+"Insulin Products by Category": {
+  "Rapid-Acting": "#007bff",
+  "Short-Acting": "#28a745",
+  "Intermediate-Acting": "#ffc107",
+  "Long-Acting": "#dc3545",
+  "Combination": "#6c757d"
+},
+      "Stock Transfers": {
+        // optional: default all routes to purple or generate random
+        default: "#28a745"
+      },
+      "Warehouse Stock": {
+        default: "#20c997" // Teal
+      }
+    };
+  
+    // pick color map based on chart label
+    const chartColors = Object.keys(data).map((labelKey) => {
+      const map = colorMaps[label];
+      if (map && map[labelKey]) return map[labelKey];
+      if (map && map.default) return map.default;
+      return "#999"; // fallback
+    });
+  
     return (
-      <div style={{ maxWidth: "300px", margin: "10px auto" }}>
-        <h6>{label}</h6>
-        <ChartComponent
-          options={{
-            responsive: true,
-            plugins: {
-              legend: { position: "bottom" },
-              tooltip: { enabled: true },
-            },
-          }}
-          data={{
-            labels: Object.keys(data),
-            datasets: [
-              {
-                label,
-                data: Object.values(data),
-                backgroundColor: colors,
-                borderWidth: 1,
-              },
-            ],
-          }}
-        />
-      </div>
+      <div style={chartStyle}>
+    <h6>{label}</h6>
+    <ChartComponent
+      options={chartOptions}
+      data={{
+        labels: Object.keys(data),
+        datasets: [
+          {
+            label,
+            data: Object.values(data),
+            backgroundColor: chartColors,
+            borderWidth: 1,
+          },
+        ],
+      }}
+    />
+  </div>
     );
   };
-
+  
   const handleExport = () => {
     const input = document.getElementById("dashboard-summary");
 
@@ -159,100 +276,183 @@ const Dashboard = () => {
     });
   };
 
-  return (
-    <div>
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+  const filteredTransfers = applyFilter(transferStats, transferRoute);
+  //const transferEntries = Object.entries(transferStats || {});
+//const totalTransferred = transferEntries.reduce((sum, [, qty]) => sum + qty, 0);
+return (
+  <div>
+    <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {/* 🔷 Blurred Insulin Background */}
-      <div
-        style={{
-          backgroundImage: `url(${insulinBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(10px)",
-          position: "fixed",
-          width: "100%",
-          height: "100%",
-          top: 0,
-          left: 0,
-          zIndex: -2,
-        }}
-      ></div>
-
-      {/* 🔷 White Overlay */}
-      <div
-        style={{
-          backgroundColor: "rgba(255, 255, 255, 0.6)",
-          backdropFilter: "blur(2px)",
-          position: "fixed",
-          width: "100%",
-          height: "100%",
-          top: 0,
-          left: 0,
-          zIndex: -1,
-        }}
-      ></div>
-
-      {/* 🔷 Main Content */}
+    <div style={{ backgroundColor: "#f9f9f9", minHeight: "100vh", paddingTop: "70px" }}>
       <div style={{ padding: "20px" }}>
         {loading && <p>⏳ Loading dashboard...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         {!loading && !error && activeTab === "welcome" && (
           <div>
-            <div className="container" style={{ paddingTop: "65px" }}></div>
             <h3 className="text-center mb-4">Welcome to Bioton Management System! 🎉</h3>
             <p className="text-center">Quick overview of your operations:</p>
 
-            {/* Filters */}
-            <div className="row mb-4">
-              {[
-                { label: "Order Status", value: filters.orderStatus, key: "orderStatus", source: orderStats },
-                { label: "Inventory Status", value: filters.inventoryStatus, key: "inventoryStatus", source: inventoryStats },
-                { label: "Exception Type", value: filters.exceptionType, key: "exceptionType", source: exceptionStats },
-                { label: "Insulin Category", value: filters.insulinCategory, key: "insulinCategory", source: insulinStats },
-              ].map((filter, index) => (
-                <div className="col-md-3" key={index}>
-                  <label>{filter.label}</label>
-                  <select
-                    className="form-control"
-                    value={filter.value}
-                    onChange={(e) => setFilters({ ...filters, [filter.key]: e.target.value })}
-                  >
-                    <option>All</option>
-                    {filter.source && Object.keys(filter.source).map((opt) => <option key={opt}>{opt}</option>)}
-                  </select>
-                </div>
-              ))}
-            </div>
-
-            {/* Summary Cards & Charts */}
+            {/* Wrap entire section in one exportable div */}
             <div id="dashboard-summary">
+              {/* ✅ Summary Cards */}
               <div className="row text-center mb-4">
-                {[
-                  { label: "Total Orders", color: "primary", stat: orderStats },
-                  { label: "Total Inventory Items", color: "secondary", stat: inventoryStats },
-                  { label: "Exceptions", color: "danger", stat: exceptionStats },
-                  { label: "Insulin Products", color: "success", stat: insulinStats },
-                ].map((card, index) => (
-                  <div className="col-md-3" key={index}>
-                    <div className={`card text-white bg-${card.color}`}>
-                      <div className="card-body">
-                        <h5>{card.label}</h5>
-                        <p className="display-6">{Object.values(card.stat || {}).reduce((a, b) => a + b, 0)}</p>
-                      </div>
+                <div className="col-md-2">
+                  <div className="card text-white bg-primary mb-3">
+                    <div className="card-body">
+                      <h5>Total Orders</h5>
+                      <p className="display-6">{Object.values(orderStats || {}).reduce((a, b) => a + b, 0)}</p>
                     </div>
                   </div>
-                ))}
+                  <div className="card text-white bg-dark">
+                    <div className="card-body">
+                      <h5>Total Inventory Units</h5>
+                      <p className="display-6">
+                        {Object.values(inventoryByWarehouse || {}).reduce((a, b) => a + b, 0)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {[
+                  { label: "Total Inventory Items", data: inventoryStats, color: "secondary" },
+                  { label: "Exceptions", data: exceptionStats, color: "danger" },
+                  { label: "Insulin Products", data: insulinStats, color: "success" },
+                ].map(({ label, data, color }) => {
+                  const total = data ? Object.values(data).reduce((a, b) => a + b, 0) : 0;
+                  return (
+                    <div className="col-md-2" key={label}>
+                      <div className={`card text-white bg-${color}`}>
+                        <div className="card-body">
+                          <h5>{label}</h5>
+                          <p className="display-6">{total}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                <div className="col-md-2">
+                  <div className="card text-white bg-success">
+                    <div className="card-body">
+                      <h5>Total Transferred</h5>
+                      <p className="display-6">{totalTransferred}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-md-2">
+                  <div className="card text-white bg-info">
+                    <div className="card-body">
+                      <h5>Transfer Entries</h5>
+                      <p className="display-6">{transferEntries.length}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              {/* ✅ Charts */}
               <div className="row">
-                <div className="col-md-6">{renderChart("Orders by Status", applyFilter(orderStats, filters.orderStatus), Bar, ["#007bff", "#28a745", "#dc3545", "#ffc107"])}</div>
-                <div className="col-md-6">{renderChart("Inventory by Status", applyFilter(inventoryStats, filters.inventoryStatus), Pie, ["#17a2b8", "#ffc107", "#dc3545", "#6c757d"])}</div>
-                <div className="col-md-6">{renderChart("Exceptions", applyFilter(exceptionStats, filters.exceptionType), Doughnut, ["#e83e8c", "#20c997", "#007bff", "#fd7e14"])}</div>
-                <div className="col-md-6">{renderChart("Insulin Products by Category", applyFilter(insulinStats, filters.insulinCategory), Doughnut, ["#007bff", "#28a745", "#ffc107", "#dc3545", "#6c757d"])}</div>
+                <div className="col-md-6">
+                  <label>Order Status</label>
+                  <select
+                    className="form-control mb-2"
+                    value={filters.orderStatus}
+                    onChange={(e) => setFilters({ ...filters, orderStatus: e.target.value })}
+                  >
+                    <option>All</option>
+                    {orderStats && Object.keys(orderStats).map((opt) => <option key={opt}>{opt}</option>)}
+                  </select>
+                  {renderChart("Orders by Status", applyFilter(orderStats, filters.orderStatus), Bar)}
+                </div>
+
+                <div className="col-md-6">
+                  <label>Inventory Status</label>
+                  <select
+                    className="form-control mb-2"
+                    value={filters.inventoryStatus}
+                    onChange={(e) => setFilters({ ...filters, inventoryStatus: e.target.value })}
+                  >
+                    <option>All</option>
+                    {inventoryStats && Object.keys(inventoryStats).map((opt) => <option key={opt}>{opt}</option>)}
+                  </select>
+                  {renderChart("Inventory by Status", applyFilter(inventoryStats, filters.inventoryStatus), Pie)}
+                </div>
+
+                <div className="col-md-6">
+                  <label>Exception Type</label>
+                  <select
+                    className="form-control mb-2"
+                    value={filters.exceptionType}
+                    onChange={(e) => setFilters({ ...filters, exceptionType: e.target.value })}
+                  >
+                    <option>All</option>
+                    {exceptionStats && Object.keys(exceptionStats).map((opt) => <option key={opt}>{opt}</option>)}
+                  </select>
+                  {renderChart("Exceptions", applyFilter(exceptionStats, filters.exceptionType), Doughnut)}
+                </div>
+
+                <div className="col-md-6">
+                  <label>Insulin Category</label>
+                  <select
+                    className="form-control mb-2"
+                    value={filters.insulinCategory}
+                    onChange={(e) => setFilters({ ...filters, insulinCategory: e.target.value })}
+                  >
+                    <option>All</option>
+                    {insulinStats && Object.keys(insulinStats).map((opt) => <option key={opt}>{opt}</option>)}
+                  </select>
+                  {renderChart("Insulin Products by Category", applyFilter(insulinStats, filters.insulinCategory), Doughnut)}
+                </div>
+
+                {/* Transfers + Warehouse Bar Chart */}
+                <div className="row">
+                  <div className="col-md-6">
+                    <label>Stock Transfer Route</label>
+                    <select
+                      className="form-control mb-2"
+                      value={transferRoute}
+                      onChange={(e) => setTransferRoute(e.target.value)}
+                    >
+                      <option>All</option>
+                      {transferStats && Object.keys(transferStats).map((r) => (
+                        <option key={r}>{r}</option>
+                      ))}
+                    </select>
+                    <div style={{ margin: "0 auto" }}>
+                      {renderChart("Stock Transfers", filteredTransfers, Bar, ["#6f42c1"], {
+                        indexAxis: "x",
+                        scales: {
+                          x: {
+                            ticks: { autoSkip: false, maxRotation: 0, minRotation: 0 },
+                          },
+                        },
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="col-md-6">
+                    <label>Warehouse</label>
+                    <select
+                      className="form-control mb-2"
+                      value={filters.warehouseName}
+                      onChange={(e) => setFilters({ ...filters, warehouseName: e.target.value })}
+                    >
+                      <option>All</option>
+                      {Object.keys(filteredWarehouseData).map((wh) => (
+                        <option key={wh}>{wh}</option>
+                      ))}
+                    </select>
+
+                    {renderChart(
+                      "Warehouse Stock",
+                      applyFilter(filteredWarehouseData, filters.warehouseName),
+                      Bar
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            </div> {/* ✅ END: dashboard-summary */}
 
             <div className="text-center mt-4">
               <button className="btn btn-outline-dark" onClick={handleExport}>
@@ -265,10 +465,11 @@ const Dashboard = () => {
         {!loading && !error && activeTab === "inventory" && <Inventory />}
         {!loading && !error && activeTab === "orders" && <Orders />}
         {!loading && !error && activeTab === "exceptions" && <Exceptions />}
-        {!loading && activeTab === "insulin" && <InsulinDashboard />}
+        {!loading && !error && activeTab === "insulin" && <InsulinDashboard />}
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default Dashboard;

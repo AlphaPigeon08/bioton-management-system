@@ -8,7 +8,7 @@ const API = axios.create({
   },
 });
 
-// ✅ Request Interceptor: Add auth token if present
+// ✅ Request Interceptor: Attach token
 API.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
@@ -17,22 +17,31 @@ API.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// ✅ Optional Response Interceptor: Handle expired or invalid token
+// ✅ Response Interceptor: Auto logout on expired token
 API.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response && error.response.status === 401) {
-      console.warn("⚠️ Unauthorized: Logging out user.");
+    const status = error.response?.status;
+    const errorMsg = error.response?.data?.error;
+
+    // Only logout if token is actually expired
+    if (status === 401 && errorMsg === "Token expired") {
+      console.warn("🔐 JWT expired. Logging out user.");
+
       localStorage.removeItem("authToken");
       sessionStorage.removeItem("authToken");
       localStorage.removeItem("user");
-      window.location.href = "/"; // Force logout to login page
+
+      // Optional: Toast/snackbar message before redirect
+      alert("Your session has expired. Please log in again.");
+
+      // Redirect to login page
+      window.location.href = "/";
     }
+
     return Promise.reject(error);
   }
 );

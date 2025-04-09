@@ -36,3 +36,54 @@
     transform: rotate(360deg);
   }
 }
+
+/* Teal background customization */
+.bg-teal {
+  background-color: #20c997 !important;
+  color: white !important;
+}
+
+.bg-teal .card-body {
+  color: white !important;
+}
+
+/* Dashboard layout improvements */
+.dashboard-section {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.dashboard-header {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card-row .card {
+  flex: 1 1 180px;
+  max-width: 220px;
+  min-height: 120px;
+}
+
+.chart-col {
+  padding: 15px;
+}
+.card + .card {
+  margin-top: 15px;
+}
+.navbar .btn-sm {
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+.navbar .btn-sm:not(:last-child) {
+  margin-right: 4px;
+}
