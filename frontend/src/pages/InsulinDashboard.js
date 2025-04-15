@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../api";
 import { Table, Spinner, Alert, Form } from "react-bootstrap";
 import { saveAs } from "file-saver";
+import "../styles/Insulin.css"
 
 const InsulinDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -49,7 +50,7 @@ const InsulinDashboard = () => {
   const categories = ["All", ...new Set(products.map((p) => p.category))];
 
   return (
-    <div className="container" style={{ paddingTop: "80px" }}>
+    <div className="container insulin">
       <h2 className="text-center my-4">💉 Insulin Products</h2>
 
       <div className="d-flex gap-3 mb-3 flex-wrap align-items-center">

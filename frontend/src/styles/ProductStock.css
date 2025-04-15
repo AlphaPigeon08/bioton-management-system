@@ -1,0 +1,12 @@
+.productStock {
+    padding:2%;
+    margin: auto;
+    margin-top: 7.5%;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.productStock h3 {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}

@@ -39,6 +39,13 @@ const Inventory = () => {
   const [sending, setSending] = useState(false);
   const [showAlerts, setShowAlerts] = useState(false);
   const [showSelectedTable, setShowSelectedTable] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  //const [showRefillModal, setShowRefillModal] = useState(false);
+const [refillBatch, setRefillBatch] = useState(null);
+const [refillQuantity, setRefillQuantity] = useState("");
+const [refillExpiry, setRefillExpiry] = useState("");
+
+
 
   const [selectedOrderId, setSelectedOrderId] = useState("");
   const [pendingOrders, setPendingOrders] = useState([]);
@@ -196,24 +203,30 @@ const Inventory = () => {
   
   const handleAdd = async () => {
     const { batch_no, quantity, expiry_date, status, product_id, warehouse_id } = newItem;
+  
     if (!batch_no || !quantity || !expiry_date || !status || !product_id || !warehouse_id) {
-      setMessage("❗ Please fill in all fields.");
+      setToastMessage("❗ Please fill in all fields.");
       return;
     }
+  
     if (Number(quantity) <= 0) {
-      setMessage("❗ Quantity must be greater than zero.");
+      setToastMessage("❗ Quantity must be greater than zero.");
       return;
     }
+  
     try {
       const res = await API.get("/inventory");
       const duplicate = res.data.find(
         (item) => item.batch_no === batch_no && item.warehouse_id === warehouse_id
       );
       if (duplicate) {
-        setMessage("❗ This batch number already exists in the selected warehouse.");
+        setToastMessage("❗ This batch number already exists in the selected warehouse.");
         return;
       }
-      await API.post("/inventory", newItem);
+  
+      const response = await API.post("/inventory", newItem); // ✅ Updated line
+      setToastMessage(response.data.message); // ✅ Show backend success message
+  
       fetchInventory();
       setNewItem({
         batch_no: "",
@@ -223,11 +236,11 @@ const Inventory = () => {
         product_id: "",
         warehouse_id: "",
       });
-      setMessage("✅ Item added successfully!");
+  
     } catch (err) {
       console.error("❌ Error adding item:", err);
       const serverMsg = err.response?.data?.error;
-      setMessage(serverMsg || "❌ Failed to add item.");
+      setToastMessage(serverMsg || "❌ Failed to add item.");
     }
   };
   
@@ -244,6 +257,25 @@ const Inventory = () => {
       });
   };
   
+
+  const handleRefill = async ({ inventory_id, added_quantity, new_expiry_date }) => {
+    try {
+      const res = await API.post("/refill-batch", {
+        inventory_id,
+        added_quantity,
+        new_expiry_date,
+      });
+  
+      setToastMessage(res.data.message); // ✅ Show backend success message like "50 units added out of 30000"
+      fetchInventory(); // ✅ Refresh table
+    } catch (err) {
+      console.error("❌ Refill error:", err);
+      const msg = err.response?.data?.error || "❌ Failed to refill batch.";
+      setToastMessage(msg);
+    }
+  };
+  
+
   const handleDownload = () => {
     setDownloading(true);
     API.get("/inventory/download-report", { responseType: "blob" })
@@ -356,6 +388,12 @@ const Inventory = () => {
             ))}
           </Form.Select>
         </Form>
+
+        {toastMessage && (
+  <div className="alert alert-success mt-3">
+    {toastMessage}
+  </div>
+)}
   
         {/* ➕ Add New Item */}
         <div className="bg-white p-4 rounded shadow-sm mb-5">
@@ -548,15 +586,23 @@ const Inventory = () => {
         </td>
         <td>{record.expiry_date ? new Date(record.expiry_date).toLocaleDateString() : "-"}</td>
         <td><strong>{record.warehouse_name}</strong></td> {/* ✅ emphasize */}
-        <td>
-          <Button
-            variant="danger"
-            size="sm"
-            onClick={() => handleDelete(record.inventory_id)}
-          >
-            <FaTrash /> Delete
-          </Button>
-        </td>
+        <td className="d-flex gap-4">
+  <Button
+    variant="danger"
+    size="sm"
+    onClick={() => handleDelete(record.inventory_id)}
+  >
+    <FaTrash /> Delete
+  </Button>
+
+  <Button
+    variant="outline-primary" // 🌟 lighter look
+    size="sm"
+    onClick={() => setRefillBatch(record)}
+  >
+    ✏️ Refill
+  </Button>
+</td>
       </tr>
     ))
   ) : (
@@ -581,6 +627,63 @@ const Inventory = () => {
   </Button>
 </div>
 </div>
+
+{/* 🧪 Refill Modal */}
+{refillBatch && (
+  <div className="modal fade show" style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}>
+    <div className="modal-dialog modal-dialog-centered">
+      <div className="modal-content">
+        <div className="modal-header bg-primary text-white">
+          <h5 className="modal-title">Refill Batch: {refillBatch.batch_no}</h5>
+          <button type="button" className="btn-close" onClick={() => setRefillBatch(null)}></button>
+        </div>
+        <div className="modal-body">
+          <Form.Group className="mb-3">
+            <Form.Label>Added Quantity</Form.Label>
+            <Form.Control
+              type="number"
+              value={refillQuantity}
+              onChange={(e) => setRefillQuantity(e.target.value)}
+              placeholder="Enter quantity to add"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>New Expiry Date (optional)</Form.Label>
+            <Form.Control
+              type="date"
+              value={refillExpiry}
+              onChange={(e) => setRefillExpiry(e.target.value)}
+            />
+          </Form.Group>
+        </div>
+        <div className="modal-footer">
+          <Button variant="secondary" onClick={() => setRefillBatch(null)}>
+            Cancel
+          </Button>
+          <Button
+            variant="success"
+            onClick={async () => {
+              await handleRefill({
+                inventory_id: refillBatch.inventory_id,
+                added_quantity: Number(refillQuantity),
+                new_expiry_date: refillExpiry || null,
+              });
+
+              // Clear modal state
+              setRefillBatch(null);
+              setRefillQuantity("");
+              setRefillExpiry("");
+            }}
+          >
+            💉 Confirm Refill
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+
 </Container>
 );
 }

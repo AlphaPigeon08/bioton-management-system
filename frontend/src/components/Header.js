@@ -5,13 +5,19 @@ import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/logo.jpeg";
 import API from "../api";
 
-const Header = ({ username, activeTab, setActiveTab }) => {
+const Header = ({ activeTab, setActiveTab }) => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // ✅ Get user info from localStorage
+  const user = JSON.parse(localStorage.getItem("user"));
+  const username = user?.name || "User";
+  const role = user?.role || "N/A"
 
   const isDashboard = location.pathname === "/dashboard";
   const isTransfer = location.pathname === "/transfer";
   const isSettings = location.pathname === "/settings";
+  const isProductsStock = location.pathname === "/product-stock";
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -32,7 +38,6 @@ const Header = ({ username, activeTab, setActiveTab }) => {
       if (setActiveTab) setActiveTab(tabName);
     }
   };
-
   return (
     <Navbar expand="lg" fixed="top" bg="white" variant="light" className="shadow-sm px-4 py-2 border-bottom">
       <Container fluid>
@@ -41,12 +46,18 @@ const Header = ({ username, activeTab, setActiveTab }) => {
           <img src={logo} alt="Bioton Logo" width="45" height="45" className="me-2 rounded" />
           <span className="fw-bold fs-5 text-primary">Bioton Management</span>
         </Navbar.Brand>
-
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-        <Navbar.Collapse id="responsive-navbar-nav">
+        {/* Start of collapsible content */}
+      <Navbar.Collapse id="responsive-navbar-nav">
+        {/* Left: Welcome message */}
+        <Nav className="me-auto align-items-center">
+        <span className="fw-semibold text-secondary">
+  Welcome, {username} 👋
+</span>
+        </Nav>
           <Nav className="ms-auto align-items-center gap-2">
-            {(isDashboard || isTransfer) && (
+            {(isDashboard || isTransfer || isProductsStock) && (
               <>
                 <button
                   onClick={() => goToDashboardTab("welcome")}
@@ -79,6 +90,13 @@ const Header = ({ username, activeTab, setActiveTab }) => {
                   💉 Insulin
                 </button>
                 <button
+           onClick={() => navigate("/product-stock")}
+           className={`btn btn-sm ${location.pathname === "/productstock" ? "btn-dark" : "btn-outline-dark"}`}
+             >
+            📊 Product Stock
+           </button>
+
+                <button
                   onClick={() => navigate("/transfer")}
                   className={`btn btn-sm ${isTransfer ? "btn-warning" : "btn-outline-warning"}`}
                 >
@@ -102,13 +120,16 @@ const Header = ({ username, activeTab, setActiveTab }) => {
               title={
                 <span>
                   <FaUserCircle className="me-2" />
-                  {username || "User"}
+                  {username}
                 </span>
               }
               id="user-nav-dropdown"
             >
-              <NavDropdown.Item onClick={handleSettings}>⚙️ Settings</NavDropdown.Item>
+              <NavDropdown.ItemText>
+                <strong>Role:</strong> {role}
+              </NavDropdown.ItemText>
               <NavDropdown.Divider />
+              <NavDropdown.Item onClick={handleSettings}>⚙️ Settings</NavDropdown.Item>
               <NavDropdown.Item onClick={handleLogout}>🚪 Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>

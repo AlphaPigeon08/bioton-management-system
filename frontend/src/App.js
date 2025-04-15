@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import VerifyOTP from "./pages/VerifyOTP";
 import UserSettings from "./pages/UserSettings";
 import TransferInventory from "./pages/TransferInventory";
+import ProductStock from "./pages/ProductStock";
 import "bootstrap/dist/css/bootstrap.min.css";
 import API from "./api";
 
@@ -49,6 +50,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <TransferInventory />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/product-stock"
+          element={
+            <PrivateRoute>
+              <ProductStock />
             </PrivateRoute>
           }
         />

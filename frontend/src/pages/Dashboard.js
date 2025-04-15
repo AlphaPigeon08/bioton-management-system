@@ -40,8 +40,10 @@ const Dashboard = () => {
   const [transferRoute, setTransferRoute] = useState("All");
   const [loading, setLoading] = useState(true);
   const transferEntries = Object.entries(transferStats || {});
-const totalTransferred = transferEntries.reduce((sum, [, qty]) => sum + qty, 0);
+  const totalTransferred = transferEntries.reduce((sum, [, qty]) => sum + qty, 0);
   const [error, setError] = useState("");
+  const [productStockStats, setProductStockStats] = useState([]);
+  const [productFilters, setProductFilters] = useState({ category: "All" });
 
   const [filters, setFilters] = useState({
     orderStatus: "All",
@@ -52,6 +54,40 @@ const totalTransferred = transferEntries.reduce((sum, [, qty]) => sum + qty, 0);
   });
   const [inventoryByWarehouse, setInventoryByWarehouse] = useState({});
   const location = useLocation();
+
+  useEffect(() => {
+    const fetchProductStockData = async () => {
+      try {
+        const insulinRes = await API.get("/product-insulin");
+        const stockRes = await API.get("/product-stock");
+  
+        const stockMap = Object.fromEntries(stockRes.data.map(p => [p.product_id, p.total_stock]));
+  
+        const merged = insulinRes.data.map(product => ({
+          category: product.category,
+          name: product.product_name,
+          stock: stockMap[product.product_id] || 0
+        }));
+  
+        setProductStockStats(merged);
+      } catch (err) {
+        console.error("❌ Error loading product stock chart data", err);
+      }
+    };
+  
+    fetchProductStockData();
+  }, []);
+
+  const filterStockByCategory = (data, category) => {
+    if (!data || data.length === 0) return {};
+    const filtered = category === "All" ? data : data.filter(d => d.category === category);
+  
+    const result = {};
+    filtered.forEach(item => {
+      result[item.name] = item.stock;
+    });
+    return result;
+  };
 
   useEffect(() => {
     if (location.state?.tab) {
@@ -198,7 +234,8 @@ const totalTransferred = transferEntries.reduce((sum, [, qty]) => sum + qty, 0);
   "Late Processing": "#007bff",       // Blue
   "Order Mismatch": "#6f42c1",        // Purple
   "FIFO Violation": "#20c997",        // Teal
-  "FIFO": "#fd7e14"                   // Orange
+  "FIFO": "#6c757d",                   // Orange
+  "Fulfilled with Skips": "#fd7e14"
 },
 "Insulin Products by Category": {
   "Rapid-Acting": "#007bff",
@@ -213,6 +250,18 @@ const totalTransferred = transferEntries.reduce((sum, [, qty]) => sum + qty, 0);
       },
       "Warehouse Stock": {
         default: "#20c997" // Teal
+      },
+      "Product Stock": {
+        "Humalog": "#007bff",     // Blue
+        "Novolog": "#28a745",     // Green
+        "Apidra": "#ffc107",      // Yellow
+        "Humulin R": "#dc3545",   // Red
+        "Novolin R": "#6f42c1",   // Purple
+        "Humulin N": "#20c997",   // Aqua
+        "Lantus": "#17a2b8",      // Teal
+        "Levemir": "#6c757d",     // Gray
+        "Tresiba": "#fd7e14",     // Orange
+        "Ryzodeg": "#6610f2"      // Indigo
       }
     };
   
@@ -247,7 +296,6 @@ const totalTransferred = transferEntries.reduce((sum, [, qty]) => sum + qty, 0);
   
   const handleExport = () => {
     const input = document.getElementById("dashboard-summary");
-
     html2canvas(input, {
       scale: 2,
       scrollY: -window.scrollY,
@@ -450,6 +498,27 @@ return (
                       Bar
                     )}
                   </div>
+                </div>
+
+                <div className="col-md-6">
+                  <label>Product Stock by Category</label>
+                  <select
+                    className="form-control mb-2"
+                    value={productFilters.category}
+                    onChange={(e) => setProductFilters({ ...productFilters, category: e.target.value })}
+                  >
+                    <option>All</option>
+                    {[...new Set(productStockStats.map(p => p.category))].map((cat) => (
+                      <option key={cat}>{cat}</option>
+                    ))}
+                  </select>
+
+                  {renderChart(
+                    "Product Stock",
+                    filterStockByCategory(productStockStats, productFilters.category),
+                    Doughnut,
+                    ["#36a2eb", "#4bc0c0", "#9966ff", "#ff6384", "#ffcd56"]
+                  )}
                 </div>
               </div>
             </div> {/* ✅ END: dashboard-summary */}

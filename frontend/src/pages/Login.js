@@ -112,31 +112,36 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
-
+  
     try {
       const response = await API.post("/login", { email, password });
-
-      if (response.data.requiresOtp) {
-        localStorage.setItem("tempToken", response.data.tempToken);
+  
+      const { requiresOtp, tempToken, token, user } = response.data;
+  
+      if (requiresOtp) {
+        // ✅ Store temporary data for OTP verification
+        localStorage.setItem("tempToken", tempToken);
         localStorage.setItem("emailForOTP", email);
+  
         navigate("/verify-otp");
       } else {
-        const token = response.data.token;
-        const user = response.data.user;
-
+        // ✅ Store auth token (persistent or session)
         if (rememberMe) {
           localStorage.setItem("authToken", token);
         } else {
           sessionStorage.setItem("authToken", token);
         }
-
+  
+        // ✅ Also store user info and set default API header
         localStorage.setItem("user", JSON.stringify(user));
         API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
+  
+        // ✅ Navigate to dashboard
         navigate("/dashboard");
       }
     } catch (error) {
       console.error("Login failed:", error);
+  
       if (error.response?.status === 401) {
         setError("❌ Invalid email or password.");
       } else {
@@ -144,7 +149,7 @@ const Login = () => {
       }
     }
   };
-
+  
   return (
     <>
       <Background />

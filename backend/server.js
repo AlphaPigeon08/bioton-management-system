@@ -98,6 +98,7 @@ if (
 
 
 // ✅ Login with optional MFA
+// ✅ Login with optional MFA
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const sql = "SELECT * FROM Users WHERE email = ?";
@@ -129,16 +130,26 @@ app.post('/login', async (req, res) => {
 
       transporter.sendMail(mailOptions, (error) => {
         if (error) return res.status(500).json({ error: "Failed to send OTP" });
-        return res.json({ requiresOtp: true, message: "✅ MFA is enabled. OTP sent to email.", tempToken: jwt.sign({ id: user.user_id }, process.env.JWT_SECRET, { expiresIn: "10m" }) });
+        return res.json({
+          requiresOtp: true,
+          message: "✅ MFA is enabled. OTP sent to email.",
+          tempToken: jwt.sign(
+            { id: user.user_id, name: user.name, role: user.role }, // ✅ name included here too
+            process.env.JWT_SECRET,
+            { expiresIn: "10m" }
+          )
+        });
       });
     } else {
-      const token = jwt.sign({ id: user.user_id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "24h" });
+      const token = jwt.sign(
+        { id: user.user_id, role: user.role, name: user.name }, // ✅ name added to JWT payload
+        process.env.JWT_SECRET,
+        { expiresIn: "24h" }
+      );
       return res.json({ message: "✅ Login successful!", token, user });
     }
   });
 });
-
-// ✅ Verify OTP
 app.post('/verify-otp', (req, res) => {
   const { email, otp } = req.body;
   const sql = "SELECT * FROM Users WHERE email = ?";
@@ -150,7 +161,11 @@ app.post('/verify-otp', (req, res) => {
     const user = results[0];
     if (user.otp_code !== otp) return res.status(401).json({ error: "Invalid OTP" });
 
-    const token = jwt.sign({ id: user.user_id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "24h" });
+    const token = jwt.sign(
+      { id: user.user_id, role: user.role, name: user.name }, // ✅ name included here too
+      process.env.JWT_SECRET,
+      { expiresIn: "24h" }
+    );
     db.query("UPDATE Users SET otp_code = NULL WHERE user_id = ?", [user.user_id]);
 
     res.json({ token, user });
@@ -163,6 +178,25 @@ app.get("/user/mfa-status", authenticateToken, (req, res) => {
   db.query("SELECT mfa_enabled FROM Users WHERE user_id = ?", [userId], (err, results) => {
     if (err || results.length === 0) return res.status(500).json({ error: "Server error" });
     res.json({ mfaEnabled: !!results[0].mfa_enabled });
+  });
+});
+
+// ✅ Get all users (only name and email) — for Admin and Warehouse_Manager
+app.get("/user/list", authenticateToken, (req, res) => {
+  const { role } = req.user;
+
+  if (role !== "Admin" && role !== "Warehouse_Manager") {
+    return res.status(403).json({ error: "Access denied." });
+  }
+
+  const sql = "SELECT name, email, mfa_enabled FROM Users ORDER BY name ASC";
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error("❌ Error fetching users:", err);
+      return res.status(500).json({ error: "Failed to fetch users." });
+    }
+    res.json(results);
   });
 });
 
@@ -185,6 +219,31 @@ app.post("/user/change-password", authenticateToken, async (req, res) => {
   });
 });
 
+//✅ Add Users
+app.post("/user/add-user", authenticateToken, async (req, res) => {
+  const { name, email, password, role } = req.body;
+
+  if (!name || !email || !password || !role) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  // Check if email already exists
+  db.query("SELECT * FROM Users WHERE email = ?", [email], async (err, results) => {
+    if (err) return res.status(500).json({ error: "Server error" });
+    if (results.length > 0) return res.status(409).json({ error: "User with this email already exists" });
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Insert new user
+    const sql = "INSERT INTO Users (name, email, password, role) VALUES (?, ?, ?, ?)";
+    db.query(sql, [name, email, hashedPassword, role], (err, result) => {
+      if (err) return res.status(500).json({ error: "Failed to create user" });
+      res.status(201).json({ message: "✅ User created successfully!", user_id: result.insertId });
+    });
+  });
+});
+
 // ✅ Toggle MFA
 app.post("/user/toggle-mfa", authenticateToken, (req, res) => {
   const userId = req.user.id;
@@ -200,7 +259,24 @@ app.post("/user/toggle-mfa", authenticateToken, (req, res) => {
     });
   });
 });
+// ✅ Delete Order API
+app.delete("/orders/:id", authenticateToken, (req, res) => {
+  const orderId = req.params.id;
 
+  const sql = "DELETE FROM Orders WHERE order_id = ?";
+  db.query(sql, [orderId], (err, result) => {
+    if (err) {
+      console.error("❌ Failed to delete order:", err);
+      return res.status(500).json({ error: "Failed to delete order" });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    res.json({ message: "✅ Order deleted successfully" });
+  });
+});
 // ✅ Orders route with JOIN to ProductInsulin and Warehouses (includes quantity)
 app.get('/orders', authenticateToken, (req, res) => {
   const { status, warehouse_id } = req.query;
@@ -290,6 +366,49 @@ app.get("/orders/download-csv", authenticateToken, (req, res) => {
       res.json(result);
     });
   });
+  app.post("/product-stock", authenticateToken, async (req, res) => {
+    const { product_id, total_stock } = req.body;
+  
+    if (!product_id || isNaN(total_stock)) {
+      return res.status(400).json({ error: "Missing or invalid fields" });
+    }
+  
+    try {
+      // Check if stock entry exists
+      const [existing] = await db.promise().query(
+        "SELECT * FROM ProductStock WHERE product_id = ?",
+        [product_id]
+      );
+  
+      if (existing.length > 0) {
+        await db.promise().query(
+          "UPDATE ProductStock SET total_stock = ? WHERE product_id = ?",
+          [total_stock, product_id]
+        );
+      } else {
+        await db.promise().query(
+          "INSERT INTO ProductStock (product_id, total_stock) VALUES (?, ?)",
+          [product_id, total_stock]
+        );
+      }
+  
+      res.json({ message: "✅ Product stock updated!" });
+    } catch (err) {
+      console.error("❌ Error updating product stock:", err);
+      res.status(500).json({ error: "Failed to update product stock" });
+    }
+  });
+  
+  app.get("/product-stock", authenticateToken, async (req, res) => {
+    try {
+      const [rows] = await db.promise().query("SELECT * FROM ProductStock");
+      res.json(rows);
+    } catch (err) {
+      console.error("❌ Error fetching product stock:", err);
+      res.status(500).json({ error: "Failed to fetch product stock" });
+    }
+  });
+  
 // ✅ Inventory route
 // ✅ Utility: Mark expired inventory items based on expiry_date
 function markExpiredInventory() {
@@ -316,46 +435,62 @@ app.get("/inventory", authenticateToken, (req, res) => {
   const markExpiredSQL = `
     UPDATE Inventory
     SET status = 'Expired'
-    WHERE expiry_date < CURDATE() AND status != 'Expired'
+    WHERE expiry_date < CURDATE()
   `;
 
   db.query(markExpiredSQL, (err) => {
     if (err) {
-      console.error("❌ Error auto-marking expired:", err);
+      console.error("❌ Error marking expired items:", err);
     }
 
-    const fetchSQL = `
-      SELECT i.*, p.product_name, w.name AS warehouse_name
-      FROM Inventory i
-      LEFT JOIN ProductInsulin p ON i.product_id = p.product_id
-      LEFT JOIN Warehouses w ON i.warehouse_id = w.warehouse_id
-      ORDER BY i.expiry_date ASC
+    const updateStatusSQL = `
+      UPDATE Inventory
+      SET status = CASE
+        WHEN expiry_date >= CURDATE() AND quantity = 0 THEN 'Out of Stock'
+        WHEN expiry_date >= CURDATE() AND quantity <= 5 THEN 'Low Stock'
+        WHEN expiry_date >= CURDATE() AND quantity > 5 THEN 'Available'
+        ELSE status
+      END
     `;
 
-    db.query(fetchSQL, (err, rows) => {
+    db.query(updateStatusSQL, (err) => {
       if (err) {
-        console.error("❌ Error fetching inventory:", err);
-        return res.status(500).json({ error: "Failed to fetch inventory" });
+        console.error("❌ Error updating stock statuses:", err);
       }
 
-      res.json(rows); // ✅ Send raw rows to frontend
+      const fetchSQL = `
+        SELECT i.*, p.product_name, w.name AS warehouse_name
+        FROM Inventory i
+        LEFT JOIN ProductInsulin p ON i.product_id = p.product_id
+        LEFT JOIN Warehouses w ON i.warehouse_id = w.warehouse_id
+        ORDER BY i.expiry_date ASC
+      `;
+
+      db.query(fetchSQL, (err, rows) => {
+        if (err) {
+          console.error("❌ Error fetching inventory:", err);
+          return res.status(500).json({ error: "Failed to fetch inventory" });
+        }
+
+        res.json(rows);
+      });
     });
   });
 });
 
-app.put("/inventory/update-status", (req, res) => {
-  const LOW_STOCK_THRESHOLD = 5;
 
+app.put("/inventory/update-status", (req, res) => {
   const updateSql = `
     UPDATE Inventory
     SET status = CASE
+      WHEN expiry_date < CURDATE() THEN 'Expired'
       WHEN quantity = 0 THEN 'Out of Stock'
-      WHEN quantity <= ? THEN 'Low Stock'
+      WHEN quantity <= 5 THEN 'Low Stock'
       ELSE 'Available'
     END
   `;
 
-  db.query(updateSql, [LOW_STOCK_THRESHOLD], (err, result) => {
+  db.query(updateSql, (err, result) => {
     if (err) {
       console.error("❌ Failed to update inventory statuses:", err);
       return res.status(500).json({ error: "Failed to update inventory statuses" });
@@ -512,43 +647,72 @@ app.get("/transfers", authenticateToken, (req, res) => {
     res.json(result);
   });
 });
+//add new inventory
+app.post("/inventory", authenticateToken, async (req, res) => {
+  const { batch_no, quantity, expiry_date, status, product_id, warehouse_id } = req.body;
 
-  // ✅ Add new inventory item
-  app.post("/inventory", authenticateToken, async (req, res) => {
-    const { batch_no, quantity, expiry_date, status, product_id, warehouse_id } = req.body;
-  
-    if (!batch_no || !quantity || !expiry_date || !status || !product_id || !warehouse_id) {
-      return res.status(400).json({ error: "❗ All fields are required." });
+  if (!batch_no || !quantity || !expiry_date || !status || !product_id || !warehouse_id) {
+    return res.status(400).json({ error: "❗ All fields are required." });
+  }
+
+  if (quantity <= 0) {
+    return res.status(400).json({ error: "❗ Quantity must be greater than zero." });
+  }
+
+  try {
+    // ✅ 1. Check for existing batch in the same warehouse
+    const [existing] = await db.promise().query(
+      "SELECT * FROM Inventory WHERE batch_no = ? AND warehouse_id = ?",
+      [batch_no, warehouse_id]
+    );
+
+    if (existing.length > 0) {
+      return res.status(409).json({ error: "❗ Batch number already exists in this warehouse." });
     }
-  
-    if (quantity <= 0) {
-      return res.status(400).json({ error: "❗ Quantity must be greater than zero." });
+
+    // ✅ 2. Check ProductStock limits before adding inventory
+    const [[{ total_stock } = {}]] = await db.promise().query(
+      `SELECT total_stock FROM ProductStock WHERE product_id = ?`,
+      [product_id]
+    );
+
+    const [[{ used = 0 } = {}]] = await db.promise().query(
+      `SELECT SUM(quantity) AS used FROM Inventory WHERE product_id = ?`,
+      [product_id]
+    );
+
+    const available = (total_stock || 0) - (used || 0);
+
+    if (quantity > available) {
+      return res.status(400).json({
+        error: `❌ Cannot add ${quantity} units. Only ${available} stock available out of ${total_stock}.`,
+      });
     }
+
+    // ✅ 3. Insert new inventory item
+    await db.promise().query(
+      "INSERT INTO Inventory (batch_no, quantity, expiry_date, status, product_id, warehouse_id) VALUES (?, ?, ?, ?, ?, ?)",
+      [batch_no, quantity, expiry_date, status, product_id, warehouse_id]
+    );
+
+    // ✅ 4. Reduce stock from ProductStock
+    await db.promise().query(
+      "UPDATE ProductStock SET total_stock = total_stock - ? WHERE product_id = ?",
+      [quantity, product_id]
+    );
+
+    // ✅ 5. Return message with context
+    res.json({
+      message: `✅ ${quantity} units added to inventory from ${total_stock} available in ProductStock. Final Available Units are ${total_stock - quantity}`,
+    });
+
+  } catch (err) {
+    console.error("❌ Error inserting inventory:", err);
+    res.status(500).json({ error: "❌ Failed to add inventory item." });
+  }
+});
+
   
-    try {
-      // Check for existing batch in the same warehouse
-      const [existing] = await db.promise().query(
-        "SELECT * FROM Inventory WHERE batch_no = ? AND warehouse_id = ?",
-        [batch_no, warehouse_id]
-      );
-  
-      if (existing.length > 0) {
-        return res.status(409).json({ error: "❗ Batch number already exists in this warehouse." });
-      }
-  
-      // Insert new inventory item
-      await db.promise().query(
-        "INSERT INTO Inventory (batch_no, quantity, expiry_date, status, product_id, warehouse_id) VALUES (?, ?, ?, ?, ?, ?)",
-        [batch_no, quantity, expiry_date, status, product_id, warehouse_id]
-      );
-  
-      res.json({ message: "✅ Inventory item added!" });
-  
-    } catch (err) {
-      console.error("❌ Error inserting inventory:", err);
-      res.status(500).json({ error: "❌ Failed to add inventory item." });
-    }
-  });
   
   // ✅ Delete Inventory Item
 app.delete("/inventory/:id", authenticateToken, (req, res) => {
@@ -637,29 +801,33 @@ app.post("/inventory/send-alerts", authenticateToken, (req, res) => {
     });
 
     const htmlContent = `
-      <h2>⚠️ Urgent Inventory Alerts</h2>
-      <p>The following items need attention:</p>
-      <table border="1" cellpadding="8">
-        <tr>
-          <th>Batch No</th>
-          <th>Product Name</th>
-          <th>Warehouse</th>
-          <th>Quantity</th>
-          <th>Expiry Date</th>
-          <th>Status</th>
-        </tr>
-        ${result.map(item => `
-          <tr>
-            <td>${item.batch_no}</td>
-            <td>${item.product_name || '-'}</td>
-            <td>${item.warehouse_name || '-'}</td>
-            <td>${item.quantity}</td>
-            <td>${new Date(item.expiry_date).toLocaleDateString()}</td>
-            <td>${item.status}</td>
-          </tr>
-        `).join('')}
-      </table>
+    <h1> Inventory Alert! </h1>
+    <p> You have received an alert on Inventory Items Availability, Please check the attached CSV for more details</p>
     `;
+    // const htmlContent = `
+    //   <h2>⚠️ Urgent Inventory Alerts</h2>
+    //   <p>The following items need attention:</p>
+    //   <table border="1" cellpadding="8">
+    //     <tr>
+    //       <th>Batch No</th>
+    //       <th>Product Name</th>
+    //       <th>Warehouse</th>
+    //       <th>Quantity</th>
+    //       <th>Expiry Date</th>
+    //       <th>Status</th>
+    //     </tr>
+    //     ${result.map(item => `
+    //       <tr>
+    //         <td>${item.batch_no}</td>
+    //         <td>${item.product_name || '-'}</td>
+    //         <td>${item.warehouse_name || '-'}</td>
+    //         <td>${item.quantity}</td>
+    //         <td>${new Date(item.expiry_date).toLocaleDateString()}</td>
+    //         <td>${item.status}</td>
+    //       </tr>
+    //     `).join('')}
+    //   </table>
+    // `;
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
@@ -748,7 +916,113 @@ app.get("/inventory/count", authenticateToken, (req, res) => {
     res.json({ count });
   });
 });
+// Get total stock available for a product
+app.get("/product-stock/:product_id", async (req, res) => {
+  const { product_id } = req.params;
 
+  try {
+    const [[{ total_stock } = {}]] = await db.query(
+      `SELECT total_stock FROM ProductStock WHERE product_id = ?`,
+      [product_id]
+    );
+
+    const [[{ used = 0 } = {}]] = await db.query(
+      `SELECT SUM(quantity) AS used FROM Inventory WHERE product_id = ?`,
+      [product_id]
+    );
+
+    const available = (total_stock || 0) - (used || 0);
+    res.json({ total_stock, used, available });
+  } catch (err) {
+    console.error("Error fetching stock:", err);
+    res.status(500).json({ error: "Failed to fetch product stock" });
+  }
+});
+
+app.post("/refill-batch", authenticateToken, (req, res) => {
+  const { inventory_id, added_quantity, new_expiry_date } = req.body;
+
+  if (!inventory_id || !added_quantity || added_quantity <= 0) {
+    return res.status(400).json({ error: "Invalid input." });
+  }
+
+  // Get batch data
+  db.query("SELECT * FROM Inventory WHERE inventory_id = ?", [inventory_id], async (err, results) => {
+    if (err || results.length === 0) {
+      return res.status(404).json({ error: "Batch not found." });
+    }
+
+    const batch = results[0];
+    const oldQty = batch.quantity;
+    const oldExpiry = batch.expiry_date;
+    const newQty = oldQty + added_quantity;
+    const updatedExpiry = new_expiry_date || oldExpiry;
+    const status = newQty > 5 ? "Available" : "Low Stock";
+
+    // 1️⃣ Update the Inventory row
+    db.query(
+      "UPDATE Inventory SET quantity = ?, expiry_date = ?, status = ? WHERE inventory_id = ?",
+      [newQty, updatedExpiry, status, inventory_id],
+      (err) => {
+        if (err) return res.status(500).json({ error: "Failed to update batch." });
+
+        // 2️⃣ Log into Refill_Log
+        const logQuery = `
+          INSERT INTO Refill_Log (batch_no, inventory_id, old_quantity, added_quantity, new_quantity, old_expiry_date, new_expiry_date, refilled_by, refilled_by_name)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `;
+        db.query(
+          logQuery,
+          [
+            batch.batch_no,
+            inventory_id,
+            oldQty,
+            added_quantity,
+            newQty,
+            oldExpiry,
+            updatedExpiry,
+            req.user.id,
+            req.user.name || "Unknown",
+          ],
+          async (err) => {
+            if (err) {
+              console.error("❌ Failed to log refill:", err);
+              return res.status(500).json({ error: "Refill log failed." });
+            }
+
+            // 3️⃣ Update ProductStock
+            db.query(
+              "UPDATE ProductStock SET total_stock = total_stock - ? WHERE product_id = ?",
+              [added_quantity, batch.product_id],
+              async (err) => {
+                if (err) {
+                  console.error("❌ Failed to update ProductStock:", err);
+                  return res.json({ message: "⚠️ Batch refilled, but stock update failed." });
+                }
+
+                // ✅ 4️⃣ Get updated stock and return response
+                try {
+                  const [[{ total_stock } = {}]] = await db
+                    .promise()
+                    .query("SELECT total_stock FROM ProductStock WHERE product_id = ?", [
+                      batch.product_id,
+                    ]);
+
+                  return res.json({
+                    message: `✅ ${added_quantity} units added out of ${total_stock + added_quantity} available in Product Stock, Final available units are ${total_stock}`,
+                  });
+                } catch (fetchErr) {
+                  console.error("❌ Failed to fetch updated ProductStock:", fetchErr);
+                  return res.json({ message: "✅ Refill completed, but stock fetch failed." });
+                }
+              }
+            );
+          }
+        );
+      }
+    );
+  });
+});
 
 
 
@@ -761,15 +1035,15 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
     if (err || orderResult.length === 0)
       return res.status(404).json({ error: "Order not found." });
 
-    const requiredQty = orderResult[0].quantity;
+    const { quantity: requiredQty, product_id: requiredProductId, warehouse_id: requiredWarehouseId } = orderResult[0];
 
     const sql = `
       SELECT * FROM Inventory 
-      WHERE quantity > 0 
+      WHERE product_id = ? AND warehouse_id = ? AND quantity > 0 
       ORDER BY expiry_date ASC
     `;
 
-    db.query(sql, async (err, results) => {
+    db.query(sql, [requiredProductId, requiredWarehouseId], async (err, results) => {
       if (err) return res.status(500).json({ error: "Inventory fetch error." });
 
       let remaining = requiredQty;
@@ -780,8 +1054,8 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
 
       for (let batch of results) {
         const expiryDate = new Date(batch.expiry_date).setHours(0, 0, 0, 0);
-        const isExpired = expiryDate < today;
         const status = (batch.status || "").toLowerCase();
+        const isExpired = expiryDate < today;
         const isReserved = status === "reserved";
         const isOutOfStock = status === "out of stock";
         const isAvailable = status === "available";
@@ -803,7 +1077,10 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
         const usedQty = Math.min(remaining, batch.quantity);
         remaining -= usedQty;
 
-        usedBatches.push({ batch_no: batch.batch_no, used_quantity: usedQty });
+        usedBatches.push({
+          batch_no: batch.batch_no,
+          used_quantity: usedQty,
+        });
 
         // Update quantity
         await new Promise((resolve, reject) => {
@@ -826,6 +1103,29 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
         if (remaining <= 0) break;
       }
 
+      // ✅ Exception Logging Logic
+      const userId = req.user.id;
+      const userName = req.user.name || "Unknown";
+
+      if (skippedBatches.length > 0) {
+        const logMessage =
+          remaining > 0
+            ? `Order fulfillment failed. Only ${requiredQty - remaining} of ${requiredQty} fulfilled.`
+            : `Order fulfilled successfully, but ${skippedBatches.length} batch(es) were skipped.`;
+
+        const logType = remaining > 0 ? "Fulfillment Failed" : "Fulfilled with Skips";
+        const logDetails = JSON.stringify(skippedBatches);
+
+        const logSql = `
+          INSERT INTO Exception_Log (order_id, inventory_id, message, exception_type, details, triggered_by, triggered_by_name, created_at)
+          VALUES (?, NULL, ?, ?, ?, ?, ?, NOW())
+        `;
+
+        db.query(logSql, [order_id, logMessage, logType, logDetails, userId, userName], (err) => {
+          if (err) console.error("❌ Failed to log exception with user name:", err);
+        });
+      }
+
       if (remaining > 0) {
         return res.status(409).json({
           message: "Insufficient stock",
@@ -836,7 +1136,7 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
         });
       }
 
-      // Update order status
+      // ✅ Order fully fulfilled, update order status
       db.query(
         "UPDATE Orders SET status = 'Fulfilled' WHERE order_id = ?",
         [order_id],
@@ -853,7 +1153,6 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
     });
   });
 });
-
 
 
 
