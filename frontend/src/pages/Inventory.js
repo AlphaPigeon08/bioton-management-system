@@ -202,8 +202,9 @@ const [refillExpiry, setRefillExpiry] = useState("");
   };
   
   const handleAdd = async () => {
+    
     const { batch_no, quantity, expiry_date, status, product_id, warehouse_id } = newItem;
-  
+    // console.log('fe', status);
     if (!batch_no || !quantity || !expiry_date || !status || !product_id || !warehouse_id) {
       setToastMessage("❗ Please fill in all fields.");
       return;

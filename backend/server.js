@@ -451,6 +451,7 @@ app.get("/inventory", authenticateToken, (req, res) => {
         WHEN expiry_date >= CURDATE() AND quantity > 5 THEN 'Available'
         ELSE status
       END
+      WHERE status != 'Reserved';
     `;
 
     db.query(updateStatusSQL, (err) => {
@@ -488,6 +489,7 @@ app.put("/inventory/update-status", (req, res) => {
       WHEN quantity <= 5 THEN 'Low Stock'
       ELSE 'Available'
     END
+    WHERE status != 'Reserved';
   `;
 
   db.query(updateSql, (err, result) => {
@@ -558,6 +560,7 @@ app.post("/transfer-inventory", authenticateToken, (req, res) => {
             ELSE 'Available'
           END
           WHERE inventory_id = ?
+          ;
         `;
 
         if (toResults.length > 0) {
@@ -690,6 +693,7 @@ app.post("/inventory", authenticateToken, async (req, res) => {
     }
 
     // ✅ 3. Insert new inventory item
+    // console.log(status);
     await db.promise().query(
       "INSERT INTO Inventory (batch_no, quantity, expiry_date, status, product_id, warehouse_id) VALUES (?, ?, ?, ?, ?, ?)",
       [batch_no, quantity, expiry_date, status, product_id, warehouse_id]
@@ -1049,9 +1053,9 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
       let remaining = requiredQty;
       let usedBatches = [];
       let skippedBatches = [];
-
       const today = new Date().setHours(0, 0, 0, 0);
 
+      // First pass — simulate usage
       for (let batch of results) {
         const expiryDate = new Date(batch.expiry_date).setHours(0, 0, 0, 0);
         const status = (batch.status || "").toLowerCase();
@@ -1074,19 +1078,50 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
           continue;
         }
 
-        const usedQty = Math.min(remaining, batch.quantity);
-        remaining -= usedQty;
+        const useQty = Math.min(remaining, batch.quantity);
+        remaining -= useQty;
 
         usedBatches.push({
+          inventory_id: batch.inventory_id,
           batch_no: batch.batch_no,
-          used_quantity: usedQty,
+          used_quantity: useQty,
         });
 
-        // Update quantity
+        if (remaining <= 0) break;
+      }
+
+      // ✅ Check if stock is sufficient BEFORE update
+      if (remaining > 0) {
+        // Log failed attempt
+        const userId = req.user.id;
+        const userName = req.user.name || "Unknown";
+        const logMessage = `Order fulfillment failed. Only ${requiredQty - remaining} of ${requiredQty} fulfilled.`;
+        const logType = "Fulfillment Failed";
+        const logDetails = JSON.stringify(skippedBatches);
+
+        const logSql = `
+          INSERT INTO Exception_Log (order_id, inventory_id, message, exception_type, details, triggered_by, triggered_by_name, created_at)
+          VALUES (?, NULL, ?, ?, ?, ?, ?, NOW())
+        `;
+        db.query(logSql, [order_id, logMessage, logType, logDetails, userId, userName], (err) => {
+          if (err) console.error("❌ Failed to log exception:", err);
+        });
+
+        return res.status(409).json({
+          message: "Insufficient stock",
+          required: requiredQty,
+          available: requiredQty - remaining,
+          usedBatches,
+          skippedBatches,
+        });
+      }
+
+      // ✅ Proceed with updates only if stock is enough
+      for (const batch of usedBatches) {
         await new Promise((resolve, reject) => {
           db.query(
             "UPDATE Inventory SET quantity = quantity - ? WHERE inventory_id = ?",
-            [usedQty, batch.inventory_id],
+            [batch.used_quantity, batch.inventory_id],
             (err) => (err ? reject(err) : resolve())
           );
         });
@@ -1099,44 +1134,26 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
             (err) => (err ? reject(err) : resolve())
           );
         });
-
-        if (remaining <= 0) break;
       }
 
-      // ✅ Exception Logging Logic
-      const userId = req.user.id;
-      const userName = req.user.name || "Unknown";
-
+      // ✅ Log skips if any
       if (skippedBatches.length > 0) {
-        const logMessage =
-          remaining > 0
-            ? `Order fulfillment failed. Only ${requiredQty - remaining} of ${requiredQty} fulfilled.`
-            : `Order fulfilled successfully, but ${skippedBatches.length} batch(es) were skipped.`;
-
-        const logType = remaining > 0 ? "Fulfillment Failed" : "Fulfilled with Skips";
+        const userId = req.user.id;
+        const userName = req.user.name || "Unknown";
+        const logMessage = `Order fulfilled successfully, but ${skippedBatches.length} batch(es) were skipped.`;
+        const logType = "Fulfilled with Skips";
         const logDetails = JSON.stringify(skippedBatches);
 
         const logSql = `
           INSERT INTO Exception_Log (order_id, inventory_id, message, exception_type, details, triggered_by, triggered_by_name, created_at)
           VALUES (?, NULL, ?, ?, ?, ?, ?, NOW())
         `;
-
         db.query(logSql, [order_id, logMessage, logType, logDetails, userId, userName], (err) => {
-          if (err) console.error("❌ Failed to log exception with user name:", err);
+          if (err) console.error("❌ Failed to log skip exception:", err);
         });
       }
 
-      if (remaining > 0) {
-        return res.status(409).json({
-          message: "Insufficient stock",
-          required: requiredQty,
-          available: requiredQty - remaining,
-          usedBatches,
-          skippedBatches,
-        });
-      }
-
-      // ✅ Order fully fulfilled, update order status
+      // ✅ Update order status
       db.query(
         "UPDATE Orders SET status = 'Fulfilled' WHERE order_id = ?",
         [order_id],
@@ -1153,8 +1170,6 @@ app.post("/fulfill-order", authenticateToken, async (req, res) => {
     });
   });
 });
-
-
 
 // ✅ Root
 app.get('/', (req, res) => res.json({ message: "🚀 Server is running!" }));
